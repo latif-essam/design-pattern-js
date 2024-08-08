@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facade</title>
+  </head>
+  <body>
+    <script>
+      class Design {
+        designElements() {
+          console.log("designElements");
+        }
+        codeDesign() {
+          console.log("codeDesig");
+        }
+        writeScripts() {
+          console.log("writeScripts");
+        }
+        linkScripts() {
+          console.log("linkScripts");
+        }
+      }
+      class PaymentGateway {
+        choosePayment() {
+          console.log("choosePayment");
+        }
+        purchacePayment() {
+          console.log("purchacePayment");
+        }
+        integratePayment() {
+          console.log("integratePayment");
+        }
+        linkPayment() {
+          console.log("linkPayment");
+        }
+      }
+      class Server {
+        chooseDevPath() {
+          console.log("chooseDevPath");
+        }
+        gatherFeatures() {
+          console.log("gatherFeatures");
+        }
+        implementDB() {
+          console.log("implementDB");
+        }
+        linkServerFeatures() {
+          console.log("linkServerFeatures");
+        }
+      }
+      class Deploy {
+        writePipelines() {
+          console.log("writePipelines");
+        }
+        integratePipelines() {
+          console.log("integratePipelines");
+        }
+        deploy() {
+          console.log("deploy");
+        }
+        monitor() {
+          console.log("monitor");
+        }
+      }
+
+      class FacadeWebsite {
+        constructor() {
+          this.design = new Design();
+          this.payment = new PaymentGateway();
+          this.server = new Server();
+          this.deploy = new Deploy();
+        }
+        FacadeMethod() {
+          this.design.codeDesign();
+          this.design.designElements();
+          this.design.linkScripts();
+          this.design.writeScripts();
+          this.payment.choosePayment();
+          this.payment.integratePayment();
+          this.payment.linkPayment();
+          this.payment.purchacePayment();
+
+          this.server.chooseDevPath();
+          this.server.gatherFeatures();
+          this.server.implementDB();
+          this.server.linkServerFeatures();
+
+          this.deploy.deploy();
+          this.deploy.integratePipelines();
+          this.deploy.monitor();
+          this.deploy.writePipelines();
+        }
+      }
+      let facadeWebsite = new FacadeWebsite();
+      facadeWebsite.FacadeMethod();
+    </script>
+  </body>
+</html>

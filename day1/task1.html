@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DP - Task 1</title>
+  </head>
+  <body>
+    <script>
+      class AbstractStudent {
+        constructor(name, type) {
+          this.name = name;
+          this.type = type;
+        }
+
+        display = function (type) {
+          console.log(this.name + " :  " + type);
+        };
+      }
+
+      class Student1 extends AbstractStudent {
+        constructor(name, type) {
+          super(name, type);
+        }
+        info() {
+          console.log(`Class of Type: ${this.type}`);
+        }
+      }
+
+      class Student2 extends AbstractStudent {
+        constructor(name, type) {
+          super(name, type);
+        }
+        info() {
+          console.log(`Class of Type: ${this.type}`);
+        }
+      }
+      class Student3 extends AbstractStudent {
+        constructor(name, type) {
+          super(name, type);
+        }
+        info() {
+          console.log(`Class of Type: ${this.type}`);
+        }
+      }
+      class Student4 extends AbstractStudent {
+        constructor(name, type) {
+          super(name, type);
+        }
+        info() {
+          console.log(`Class of Type: ${this.type}`);
+        }
+      }
+      // method one solution: using factory method
+      class StudentFactory {
+        constructor(name) {
+          this.name = name;
+        }
+        factory(type) {
+          switch (type) {
+            case "A":
+              // compostion
+              return new Student1(this.name, type);
+              break;
+            case "B":
+              return new Student2(this.name, type);
+              break;
+            case "C":
+              return new Student3(this.name, type);
+              break;
+            case "D":
+              return new Student4(this.name, type);
+              break;
+          }
+        }
+      }
+
+      let f1 = new StudentFactory("Law");
+      let StudentA = f1.factory("A");
+      StudentA.info();
+      let f2 = new StudentFactory("Law");
+      let StudentB = f2.factory("B");
+      StudentB.info();
+      let f3 = new StudentFactory("Law");
+      let StudentC = f1.factory("C");
+      StudentC.info();
+      let f4 = new StudentFactory("Law");
+      let StudentD = f1.factory("D");
+      StudentD.info();
+      //
+
+      //   using Avstract Factory
+
+      class tFactor {
+        factory(name, type) {
+          let Abs = new Student1(name, type);
+          return Abs;
+        }
+      }
+
+      class SA extends tFactor {}
+      class SB extends tFactor {}
+      class SC extends tFactor {}
+      class SD extends tFactor {}
+
+      let sa = new SA();
+      let A = sa.factory("Micheal", "A");
+      A.info();
+      let sb = new SB();
+      let B = sb.factory("Micheal", "B");
+      B.info();
+      let sc = new SC();
+      let C = sc.factory("Micheal", "C");
+      C.info();
+      let sd = new SD();
+      let D = sd.factory("Micheal", "D");
+      D.info();
+    </script>
+  </body>
+</html>

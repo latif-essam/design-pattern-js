@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Composite DP</title>
+  </head>
+  <body>
+    <script>
+      function Node(name) {
+        this.name = name;
+        this.children = [];
+      }
+      Node.prototype = {
+        add: function (child) {
+          this.children.push(child);
+        },
+        remove: function (child) {
+          this.children = this.children.filter((c) => c !== child);
+        },
+        getNode: function (i) {
+          return this.children[i];
+        },
+      };
+
+      function Traverse(indent, node) {
+        console.log(Array(indent++).join("++") + node.name);
+        for (let i = 0; i < node.children.length; i++) {
+          Traverse(indent, node.getNode(i));
+        }
+      }
+
+      let tree = new Node("box");
+      let leftBook = new Node("left Book");
+      let rightBook = new Node("rightBook");
+      let rightBookPages = new Node("rightBookPages");
+      let leftBookPages = new Node("leftBookPages");
+
+      tree.add(leftBook);
+      tree.add(rightBook);
+      rightBook.add(leftBookPages);
+      leftBook.add(rightBookPages);
+      Traverse(2, rightBook);
+    </script>
+  </body>
+</html>

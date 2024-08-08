@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>State</title>
+  </head>
+  <body>
+    <script>
+      const states = {
+        s1: "STATE_IN_PROGRESS",
+        s2: "STATE_READY_FOR_REVIEW",
+        s3: "STATE_DONE",
+      };
+
+      class TodoState {
+        constructor() {}
+        handle() {}
+      }
+      class ConState1 extends TodoState {
+        constructor() {
+          super();
+        }
+        handle() {
+          console.log("ConState1 handler");
+        }
+      }
+      class ConState2 extends TodoState {
+        constructor() {
+          super();
+        }
+        handle() {
+          console.log("ConState2 handler");
+        }
+      }
+      class ConState3 extends TodoState {
+        constructor() {
+          super();
+        }
+        handle() {
+          console.log("ConState3 handler");
+        }
+      }
+      class Context {
+        constructor(state) {
+          this.obj = null;
+          switch (state) {
+            case states.s1:
+              this.obj = new ConState1();
+              break;
+            case states.s2:
+              this.obj = new ConState2();
+              break;
+            default:
+              this.obj = new ConState3();
+          }
+        }
+        Request() {
+          this.obj.handle();
+        }
+      }
+      let con1 = new Context(states.s1);
+      con1.Request();
+      let con2 = new Context(states.s2);
+      con2.Request();
+    </script>
+  </body>
+</html>

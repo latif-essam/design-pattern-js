@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DP - Task 2</title>
+  </head>
+  <body>
+    <script>
+      class Singleton {
+        constructor(name) {
+          this.name = name;
+          if (Singleton.instance) {
+            console.log("hap");
+            Singleton.instance.counter++;
+            return Singleton.instance;
+          }
+          Singleton.prototype.counter = 1;
+
+          Singleton.instance = this;
+        }
+        display = function () {
+          console.log(Singleton.instance.counter + " " + this.name);
+        };
+      }
+      //   Singleton.prototype.counter = 1;
+      let s1 = new Singleton("Lo 1");
+      let s2 = new Singleton("lo 2");
+      let s3 = new Singleton("lo 3");
+
+      s1.display();
+      s2.display();
+      s3.display();
+    </script>
+  </body>
+</html>

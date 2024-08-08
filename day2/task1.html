@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+  </head>
+  <body>
+    <script>
+      class Teacher {
+        constructor(salary, nationality, street) {
+          this.salary = salary;
+          this.nationality = nationality;
+          this.street = street;
+        }
+        display() {
+          console.log(
+            `teacher with ${this.nationality} nationality  is living at ${this.street} street`
+          );
+        }
+      }
+
+      class TeacherDecorator {
+        constructor(user, name) {
+          this.name = name;
+          this.salary = user.salary;
+          this.nationality = user.nationality;
+          this.street = user.street;
+        }
+        display() {
+          console.log({ ...this });
+        }
+      }
+
+      let teacher = new Teacher(
+        "25000$",
+        "Not Egyptian",
+        "5 Tawfeeq street giza"
+      );
+      let teacherD = new TeacherDecorator(teacher, "Jafar");
+      teacher.display();
+      teacherD.display();
+    </script>
+  </body>
+</html>

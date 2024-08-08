@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DP - Task 4</title>
+  </head>
+  <body>
+    <script>
+      class PizzaBuilder {
+        #secretIngredients = [1, 2, 3, 4];
+
+        #cookTime(size) {
+          return this.#secretIngredients.reduce(
+            (a, b) => ((a * b) / 2 + a) * size,
+            1
+          );
+        }
+        getCookTime(size) {
+          return this.#cookTime(size);
+        }
+      }
+
+      class Customer {
+        constructor() {
+          this.pizzaB = new PizzaBuilder();
+        }
+        step1(size) {
+          console.log(this.pizzaB.getCookTime(size));
+        }
+      }
+      let customer = new Customer();
+      customer.step1(5);
+    </script>
+  </body>
+</html>

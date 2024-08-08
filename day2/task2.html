@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proxy DP</title>
+  </head>
+  <body>
+    <script>
+      class Country {
+        constructor() {
+          this.countries = ["egypt"];
+
+          this.add = function (c) {
+            if (this.countries.includes(c)) {
+              console.log(
+                `country ${c} already exists at : ${this.countries} cahed`
+              );
+            } else {
+              this.countries.push(c);
+              console.log(`country ${c} added to countries: ${this.countries}`);
+            }
+          };
+        }
+      }
+
+      class ProxyCountry {
+        constructor() {
+          let c = new Country();
+          this.cache = [];
+
+          this.add = function (country) {
+            if (this.cache.includes(country)) {
+              this.cache[country];
+              return c.add(country);
+            } else {
+              this.cache[country] = c.countries[0];
+              return c.add(country);
+            }
+          };
+        }
+      }
+      let proxyC = new ProxyCountry();
+      proxyC.add("egypt");
+      proxyC.add("egypt");
+      proxyC.add("Netherlands");
+      proxyC.add("New Zealand");
+    </script>
+  </body>
+</html>

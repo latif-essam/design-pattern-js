@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DP - Task 3</title>
+  </head>
+  <body>
+    <script>
+      class Docment {
+        constructor(header, footer, pages, text) {
+          this.header = header;
+          this.footer = footer;
+          this.pages = pages;
+          this.text = text;
+        }
+        display() {
+          console.log(this.header, this.footer, this.pages, this.text);
+        }
+      }
+
+      class DocClone {
+        clone(header, footer, pages, text) {
+          return new Docment(header, footer, pages, text);
+        }
+      }
+
+      let doc1 = new DocClone();
+      doc1.clone("header", "footer", "pages", "text").display();
+      let doc2 = new DocClone();
+      doc2.clone("header 2", "footer 2", "pages 2", "text 2").display();
+    </script>
+  </body>
+</html>
